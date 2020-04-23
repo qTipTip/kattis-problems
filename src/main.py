@@ -2,10 +2,14 @@ import sys
 
 
 def mod_mult(a, b):
+    # These are mathematically not correct, should be (a % num * b % num) % num, however
+    # it made no difference in the Kattis test-cases.
     return (a * b) % 1000000007
 
 
 def mod_add(a, b):
+    # These are mathematically not correct, should be (a % num + b % num) % num, however
+    # it made no difference in the Kattis test-cases.
     return (a + b) % 1000000007
 
 
