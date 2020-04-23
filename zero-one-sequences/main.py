@@ -29,6 +29,7 @@ def swap_count(sequence):
     N = 0  # ones
     S = 0  # swaps
 
+    # powers of two
     pow_2 = 1
     pow_2_prev = 1
 
@@ -43,7 +44,6 @@ def swap_count(sequence):
 
         elif c == 63:
             # Adding a question mark at the end of the string. We need to account for the two cases, 0 and 1.
-            #
             S = mod_add(mod_add(S, S), mod_mult(N, pow_2))
             S = mod_add(S, mod_mult(L, pow_2_prev))
 
@@ -52,10 +52,10 @@ def swap_count(sequence):
             pow_2 = mod_add(pow_2, pow_2)
             zero_branch_func = rebound_function_2
 
-
         else:
             # Adding a question mark to the end of the string. Two cases, one where no question marks has been seen, and
-            # one where question marks has been seen.
+            # one where question marks has been seen. These two cases are handled by rebinding the zero_branch_func as
+            # soon as the first question-mark is seen.
             S = zero_branch_func(S, N, pow_2_prev, pow_2, L)
 
     return S
@@ -64,3 +64,4 @@ def swap_count(sequence):
 if __name__ == '__main__':
     sequence = sys.stdin.buffer.read()
     S_mod = swap_count(sequence)
+    print(S_mod)
